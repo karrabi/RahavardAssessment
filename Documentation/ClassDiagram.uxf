@@ -1,0 +1,70 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>385</x><y>294</y><w>147</w><h>49</h></coordinates><panel_attributes>_object: Personnel_
+--
+PersonnelID: int (PK)
+FirstName: NVARCHAR(50)
+LastName: NVARCHAR(50)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>385</x><y>378</y><w>147</w><h>77</h></coordinates><panel_attributes>_object: Attributes_
+--
+AttributeID: INT (PK)
+AttributeName: NVARCHAR(50)
+DataType: NVARCHAR(20)
+IsFormula: BIT
+CreatedDate: DATETIME</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>385</x><y>588</y><w>147</w><h>77</h></coordinates><panel_attributes>_object: AttributeValues_
+--
+PersonnelID: INT (PK)
+AttributeID: INT    (PK)
+AttributeValue: NVARCHAR(MAX)
+LastUpdated: DATETIME</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>294</x><y>497</y><w>161</w><h>42</h></coordinates><panel_attributes>_object: Formulas_
+--
+AttributeID: INT (PK)
+FormulaExpression: NVARCHAR(MAX)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>483</x><y>448</y><w>21</w><h>154</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>392</x><y>448</y><w>21</w><h>63</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>91</x><y>308</y><w>147</w><h>98</h></coordinates><panel_attributes>sp_AddNewAttribute
+&lt;&lt;StoredProcedure&gt;&gt;
+--
+--
+@AttributeName: NVARCHAR(50)
+@DataType: NVARCHAR(20)
+@IsFormula: BIT
+@Formula: NVARCHAR(MAX)
+--
+Add New Attribute
+Add New Formula</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>658</x><y>392</y><w>147</w><h>91</h></coordinates><panel_attributes>sp_UpdateAttributeValue
+&lt;&lt;StoredProcedure&gt;&gt;
+--
+--
+@PersonnelID: INT
+@AttributeName: NVARCHAR(50)
+@Value: NVARCHAR(MAX)
+--
+INSERT New Attribute Value
+UPDATE Existing Attribute Value</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>525</x><y>315</y><w>63</w><h>322</h></coordinates><panel_attributes>
+lt=&lt;-</panel_attributes><additional_attributes>10;440;70;440;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>658</x><y>161</y><w>147</w><h>119</h></coordinates><panel_attributes>sp_ManagePersonnel
+&lt;&lt;StoredProcedure&gt;&gt;
+--
+--
+@Action NVARCHAR(10)
+@PersonnelID INT
+@FirstName NVARCHAR(50)
+@LastName NVARCHAR(50)
+@Condition NVARCHAR(MAX)
+--
+INSERT Personnel Data
+UPDATE Personnel Data
+DELETE  Personnel Data</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>658</x><y>497</y><w>147</w><h>56</h></coordinates><panel_attributes>sp_CalculateFormulaValues
+&lt;&lt;StoredProcedure&gt;&gt;
+--
+--
+@PersonnelID INT
+--
+reCalculate Formula-Based Values</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>525</x><y>462</y><w>147</w><h>196</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;260;120;260;120;10;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>231</x><y>385</y><w>168</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>220;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>231</x><y>392</y><w>133</w><h>119</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>170;150;170;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>525</x><y>539</y><w>147</w><h>133</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;170;150;170;150;10;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>259</y><w>224</w><h>49</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;50;10;10;300;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>77</x><y>35</y><w>84</w><h>49</h></coordinates><panel_attributes>_object: TableName_
+--
+ID: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>77</x><y>126</y><w>84</w><h>70</h></coordinates><panel_attributes>SP Name
+&lt;&lt;StoredProcedure&gt;&gt;
+--
+--
+@Param: INT
+
+--
+Actions</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>98</y><w>105</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>203</y><w>105</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>168</x><y>56</y><w>84</w><h>14</h></coordinates><panel_attributes>Entity
+bg=black</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>168</x><y>154</y><w>84</w><h>14</h></coordinates><panel_attributes>Stored Procedure
+bg=black</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>168</x><y>98</y><w>84</w><h>14</h></coordinates><panel_attributes>Relationship
+bg=black</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>168</x><y>203</y><w>84</w><h>14</h></coordinates><panel_attributes>Effects and Actions
+bg=black</panel_attributes><additional_attributes></additional_attributes></element></diagram>
